@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>{{t}}</title>
+        <!-- href="/static/assets/style.css"-->
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/style.css')}}" >
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/emoji.css')}}" >
+        <script src="{{ url_for('static',filename='assets/twemoji.min.js')}}"></script>
+        <script src="{{ url_for('static',filename='assets/emoji.js')}}"></script>
+    </head>
+<body>
+    <h1>{{ h }}</h1>
+    <hr>
+    {% if funds[0] %}
+    <b><big>Funds status:</big></b>
+    <table>
+        <tr id="row">
+            <th class="name">Fund Name</th>
+            <th class="desc">Status</th>
+            <th class="pr">Max Award</th>
+            <th class="date">Last Update</th>
+        </tr>
+    {% for fund in funds %}
+        <tr class="datas">
+            <td class="name">{{ fund["fund_name"] }}</td>
+            <td class="desc">{{ fund["status"] }}</td>
+            <td class="date">{{ fund["max_award"] }}</td>
+            <td class="pr">{{ fund["last_update"] }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+    <h4>No Funds!!</h4>
+    {% endif %}
+    <hr/>
+    <script>
+
+    </script>
+</body>
+</html>
